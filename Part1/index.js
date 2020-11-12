@@ -1,8 +1,10 @@
 
-const tictac = [0,0,0,0,0,0,0,0,]
+const tictac = [0,0,0,0,0,0,0,0,0]
+
+const sorryMan = 'Sorry, this spot is taken!'
 
 function winnerFunc(row) {
-    console.log(row,' is the winner')
+    alert(`${row} is the winner`)
 }
 
 function play(event) {
@@ -12,12 +14,18 @@ function play(event) {
     if (playerSpan.innerText === 'X') {
       playerSpan.innerText = 'O';
       selectId.innerText = 'X';
+    //   if (tictac[event] === 0) {
+    //     tictac[event] = 'X'
+    //   } else {alert(sorryMan)}
       tictac[event] = 'X'
 
 
     } else {
       playerSpan.innerText = 'X';
       selectId.innerText = "O";
+    //   if (tictac[event] === 0) {
+    //     tictac[event] = "O"
+    //   } else {alert(sorryMan)}
       tictac[event] = "O"
     }
     console.log(event,tictac)
@@ -61,8 +69,18 @@ function play(event) {
         winnerFunc(bottomMiddle)
     }
 
-    
+    // checks to see if game is fail
 
-  }
+    let saturation = 1
+    for (let i = 0; i <= 8; i++) {
+        if (tictac[i] === 0) {
+            saturation = 0
+        }
+    }
+    if (saturation === 1) {
+        alert("YOU GUYS SUCK AND HAVE NO SKILL! START OVER!")
+    }
+}
+
 
 //   (topLeft !== 0 && topLeft === topMiddle && topMiddle === topRight)
